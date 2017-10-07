@@ -6,8 +6,8 @@ import org.apache.lucene.analysis.TokenStream;
 public class TestEliminateDuplicateFilter extends BaseTokenStreamTestCase {
 
     public void testEliminate() throws Exception {
-        TokenStream stream = whitespaceMockTokenizer("mağaza mağaza ayakkabı kalem");
+        TokenStream stream = whitespaceMockTokenizer("text word word text word word");
         stream = new EliminateDuplicateFilter(stream);
-        assertTokenStreamContents(stream, new String[]{"mağaza", "ayakkabı", "kalem"});
+        assertTokenStreamContents(stream, new String[]{"text", "word"});
     }
 }
